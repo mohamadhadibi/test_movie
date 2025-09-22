@@ -1,0 +1,19 @@
+{
+  "app_name": "Test Movie",
+  "movie_list_toolbar": "Movie List",
+  "movie_info_toolbar": "Movie Info",
+  "btn_search": "Search",
+  "error_internet_connection": "No Network Connection!",
+  "error_disabled_user": "User is not enable!",
+  "error_access_denied": "Access Denied!",
+  "error_missed_input": "Missed Input!",
+  "error_authorization": "Not Authorized!",
+  "error_not_found": "Not Found!",
+  "error_unknown": "Unknown Error!",
+  "error_cache": "Read Cash Error!",
+  "error_server": "Internal Server Error!",
+  "error_intent": "Intent Error!",
+  "error_parse": "Parse Data Error!",
+  "error_permission": "Permission Error!",
+  "error_not_done": "Request can not handle, please retry later!"
+}

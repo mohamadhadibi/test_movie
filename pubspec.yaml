@@ -1,0 +1,51 @@
+name: test_movie
+description: Flutter test project for job employment.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  # local language directions
+  flutter_localizations:
+    sdk: flutter
+  # Service locator
+  get_it: ^8.2.0
+  # Bloc for state management
+  flutter_bloc: ^9.1.1
+  bloc: ^9.0.0
+  # Value equality
+  equatable: ^2.0.7
+  # Functional programming thingies
+  dartz: ^0.10.1
+  # Remote API
+  dio: ^5.9.0
+  connectivity_plus: ^7.0.0
+  # Local cache
+  shared_preferences: ^2.5.3
+  # list view
+  infinite_scroll_pagination: ^5.1.1
+  # movie sdk
+  tmdb_api: ^2.2.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mocktail: ^1.0.4
+  bloc_test: ^10.0.0
+  build_runner: ^2.8.0
+  gen_lang:
+    git:
+      url: https://github.com/KingWu/gen_lang
+      ref: 7ba7548
+  flutter_lints: ^6.0.0
+  lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
