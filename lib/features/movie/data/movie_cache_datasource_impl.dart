@@ -1,16 +1,6 @@
-import 'dart:convert';
-import 'package:dio/dio.dart';
-
-import '../../core/domain/exam/entity/exam.dart';
-import '../../core/domain/exam/repository/params_model.dart';
-import '../../core/utils/ext_int.dart';
-import '../../core/domain/user/entity/user.dart';
-import '../../core/utils/failure.dart';
-import '../../core/utils/network_info.dart';
-import '../../core/utils/utils.dart';
 import 'movie_remote_datasource.dart';
 
-class ExamRemoteDataSourceImpl implements ExamRemoteDataSource {
+class MovieCacheDatasourceImpl implements MovieCacheDatasource {
   final NetworkInfo networkInfo;
   final Dio dio;
 

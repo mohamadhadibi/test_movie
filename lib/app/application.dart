@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:test_movie/features/movie/data/route_arguments.dart';
+import 'package:test_movie/features/movie/data/models/route_arguments.dart';
 import 'package:test_movie/injection_container.dart';
 import '../injection_container.dart';
 

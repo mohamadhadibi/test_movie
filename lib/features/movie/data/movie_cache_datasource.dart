@@ -1,18 +1,10 @@
-import '../../core/domain/exam/entity/exam.dart';
-import '../../core/domain/exam/repository/params_model.dart';
+import 'package:test_movie/features/movie/domain/entities/movie_entity.dart';
+import 'package:test_movie/features/movie/domain/repositories/params.dart';
 
-abstract class ExamRemoteDataSource {
-  Future<Exam> create(ExamParams params);
+abstract class MovieCacheDatasource {
+  Future<List<MovieEntity>> query(QueryMovieParams params);
 
-  Future<Exam> update(ExamParams params);
+  Future<bool> create(CreateMovieParams params);
 
-  Future<bool> deleteExam(DeleteExamParams params);
-
-  Future<Exam> get(GetExamParams params);
-
-  Future<List<Exam>> query(QueryExamParams params);
-
-  Future<bool> addExamQuestioners(AddExamQuestionersParams params);
-
-  Future<bool> deleteExamQuestioner(DeleteExamQuestionerParams params);
+  Future<bool> delete(DeleteMovieParams params);
 }

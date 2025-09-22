@@ -29,7 +29,10 @@ Future<void> init() async {
   ));
   dio.options = options;
   get.registerLazySingleton<Dio>(() => dio);
-  final tmdb = TMDB(ApiKeys(tmdbApiKey, tmdbToken));
+  final tmdb = TMDB(
+    ApiKeys(tmdbApiKey, tmdbToken), 
+    logConfig: const ConfigLogger.showAll(),
+  );
   get.registerLazySingleton<TMDB>(() => tmdb);
 
   // NOTE: cubits
