@@ -17,8 +17,8 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
   Future<MovieRemoteDetailModel> get(GetMovieParams params) async {
     //if (!await networkInfo.isConnected) throw NetworkFailure();
     try {
-        final response = await tmdb.v3.movies.getDetails(params.movieId);
-        return Future.value(response as MovieRemoteDetailModel);
+        final json = await tmdb.v3.movies.getDetails(params.movieId);
+        return MovieRemoteDetailModel.fromJson(json);
     } on DioException catch (e) {
       throw e.response?.statusCode?.exception ?? UnknownFailure();
     } catch (e) {
@@ -34,15 +34,17 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
   Future<List<MovieRemoteModel>> query(QueryMovieParams params) async {
     //if (!await networkInfo.isConnected) throw NetworkFailure();
     try {
-      if(params.text != null && params.text!.isNotEmpty){
-        final response = await tmdb.v3.search.queryMovies(params.text!, page: params.page);
-        return Future.value(response['result'] ?? []);
+      Map<dynamic, dynamic> json;
+      if (params.text != null && params.text!.isNotEmpty) {
+        json = await tmdb.v3.search.queryMovies(params.text!, page: params.page);
       } else {
-        final response = await tmdb.v3.movies.getPopular(page: params.page);
-        return Future.value(response['result'] ?? []);
+        json = await tmdb.v3.movies.getPopular(page: params.page);
       }
-     /* List<Exam> model = getDataListFromJson<Exam>(
-              response.data, (jsonItem) => Exam.fromJson(jsonItem));*/
+      final results = (json['results'] as List?) ?? const [];
+      return results
+          .whereType<Map<dynamic, dynamic>>()
+          .map(MovieRemoteModel.fromJson)
+          .toList();
     } on DioException catch (e) {
       throw e.response?.statusCode?.exception ?? UnknownFailure();
     } catch (e) {

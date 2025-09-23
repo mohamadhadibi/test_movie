@@ -34,4 +34,19 @@ class MovieRemoteDetailModel {
         rate: vote_average?? 0,
       );
     }
+
+    factory MovieRemoteDetailModel.fromJson(Map<dynamic, dynamic> json) {
+      return MovieRemoteDetailModel(
+        backdrop_path: json['backdrop_path'] as String?,
+        homepage: json['homepage'] as String?,
+        id: json['id'] as int?,
+        original_title: json['original_title'] as String?,
+        overview: json['overview'] as String?,
+        poster_path: json['poster_path'] as String?,
+        release_date: json['release_date'] as String?,
+        title: json['title'] as String?,
+        vote_average: (json['vote_average'] as num?)?.toDouble(),
+        vote_count: json['vote_count'] as int?,
+      );
+    }
   }

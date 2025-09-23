@@ -16,7 +16,9 @@ extension ExtIntNullable on int? {
           return UnChangeableFailure();
         case 423:
           return MustBeUniqueFailure();
-        case 500 || 501 || 503:
+        case 500:
+        case 501:
+        case 503:
           return ServerFailure();
         default:
           return UnknownFailure();

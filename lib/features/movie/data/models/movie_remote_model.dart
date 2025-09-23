@@ -46,6 +46,25 @@ class MovieRemoteModel {
     static List<MovieEntity> listToEntity(List<MovieRemoteModel> list) {
       return list.map((remote) => remote.toEntity()).toList();
     }
-   }
+
+    factory MovieRemoteModel.fromJson(Map<dynamic, dynamic> json) {
+      return MovieRemoteModel(
+        adult: json['adult'] as bool?,
+        backdrop_path: json['backdrop_path'] as String?,
+        genre_ids: (json['genre_ids'] as List?)?.whereType<int>().toList(),
+        id: json['id'] as int?,
+        original_language: json['original_language'] as String?,
+        original_title: json['original_title'] as String?,
+        overview: json['overview'] as String?,
+        popularity: (json['popularity'] as num?)?.toDouble(),
+        poster_path: json['poster_path'] as String?,
+        release_date: json['release_date'] as String?,
+        title: json['title'] as String?,
+        video: json['video'] as bool?,
+        vote_average: (json['vote_average'] as num?)?.toDouble(),
+        vote_count: json['vote_count'] as int?,
+      );
+    }
+}
 
    
