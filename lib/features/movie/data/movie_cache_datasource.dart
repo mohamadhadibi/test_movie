@@ -1,10 +1,10 @@
-import 'package:test_movie/features/movie/domain/entities/movie_entity.dart';
 import 'package:test_movie/features/movie/domain/repositories/params.dart';
+import 'models/movie_cache_model.dart';
 
-abstract class MovieCacheDatasource {
-  Future<List<MovieEntity>> query(QueryMovieParams params);
+abstract class MovieCacheDataSource {
+  Future<List<MovieCacheModel>> query(QueryMovieParams params);
 
-  Future<bool> create(CreateMovieParams params);
+  Future<bool> create(SubmitMovieParams params);
 
   Future<bool> delete(DeleteMovieParams params);
 }

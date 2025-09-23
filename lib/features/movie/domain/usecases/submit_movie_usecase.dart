@@ -4,13 +4,13 @@ import 'package:test_movie/core/utils/usecase.dart';
 import 'package:test_movie/features/movie/domain/repositories/movie_repository.dart';
 import 'package:test_movie/features/movie/domain/repositories/params.dart';
 
-class CreateMovieUseCase implements UseCase<bool, CreateMovieParams> {
+class SubmitMovieUseCase implements UseCase<bool, SubmitMovieParams> {
   final MovieRepository repository;
 
-  CreateMovieUseCase(this.repository);
+  SubmitMovieUseCase(this.repository);
 
   @override
-  Future<Either<Failure, bool>> call(CreateMovieParams params) async {
+  Future<Either<Failure, bool>> call(SubmitMovieParams params) async {
     return await repository.create(params);
   }
 }

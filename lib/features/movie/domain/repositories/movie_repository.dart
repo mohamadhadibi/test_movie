@@ -8,7 +8,7 @@ abstract class MovieRepository {
 
   Future<Either<Failure, List<MovieEntity>>> query(QueryMovieParams params);
 
-  Future<Either<Failure, bool>> create(CreateMovieParams params);
+  Future<Either<Failure, bool>> create(SubmitMovieParams params);
 
   Future<Either<Failure, bool>> delete(DeleteMovieParams params);
 }

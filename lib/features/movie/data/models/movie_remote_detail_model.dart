@@ -1,3 +1,5 @@
+import 'package:test_movie/features/movie/domain/entities/movie_entity.dart';
+
 class MovieRemoteDetailModel {
     final String? backdrop_path;
     final String? homepage;
@@ -22,4 +24,14 @@ class MovieRemoteDetailModel {
       this.vote_average,
       this.vote_count,
     });
+
+    MovieEntity toEntity() {
+      return MovieEntity(
+        id: id,
+        title: title ?? original_title ?? '',
+        description: overview ?? '',
+        poster: poster_path?? '',
+        rate: vote_average?? 0,
+      );
+    }
   }

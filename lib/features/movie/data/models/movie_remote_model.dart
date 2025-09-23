@@ -1,4 +1,6 @@
-   class MovieRemoteModel {
+   import 'package:test_movie/features/movie/domain/entities/movie_entity.dart';
+
+class MovieRemoteModel {
     final bool? adult;
     final String? backdrop_path;
     final List<int>? genre_ids;
@@ -30,6 +32,20 @@
       this.vote_average,
       this.vote_count,
     });
+
+    MovieEntity toEntity() {
+      return MovieEntity(
+        id: id,
+        title: title ?? original_title ?? '',
+        description: overview ?? '',
+        poster: poster_path?? '',
+        rate: vote_average?? 0,
+      );
+    }
+
+    static List<MovieEntity> listToEntity(List<MovieRemoteModel> list) {
+      return list.map((remote) => remote.toEntity()).toList();
+    }
    }
 
    

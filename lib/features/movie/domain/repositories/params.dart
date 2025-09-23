@@ -15,5 +15,24 @@ class QueryMovieParams {
     this.text,
   });
 }
-class CreateMovieParams {}
-class DeleteMovieParams {}
+class SubmitMovieParams {
+  int? id;
+  String? title;
+  String? description;
+  String? poster;
+  double? rate;
+
+  SubmitMovieParams({
+    this.id,
+    this.title,
+    this.description,
+    this.poster,
+    this.rate,
+  });
+}
+class DeleteMovieParams {
+  int movieId;
+  DeleteMovieParams({
+    required this.movieId,
+  });
+}
