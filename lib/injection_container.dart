@@ -39,7 +39,7 @@ Future<void> init() async {
   get.registerLazySingleton(() => SubmitMovieUseCase(get()));
   get.registerLazySingleton(() => DeleteMovieUseCase(get()));
   get.registerLazySingleton(() => GetMovieUseCase(get()));
-  get.registerLazySingleton(() => QueryExamsUseCase(get()));
+  get.registerLazySingleton(() => QueryMoviesUseCase(get()));
 
   // NOTE: repositories
   get.registerLazySingleton<MovieRepository>(() => MovieRepositoryImpl(get(), get()));

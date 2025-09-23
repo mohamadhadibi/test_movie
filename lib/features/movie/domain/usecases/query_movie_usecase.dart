@@ -5,10 +5,10 @@ import 'package:test_movie/features/movie/domain/entities/movie_entity.dart';
 import 'package:test_movie/features/movie/domain/repositories/movie_repository.dart';
 import 'package:test_movie/features/movie/domain/repositories/params.dart';
 
-class QueryExamsUseCase implements UseCase<List<MovieEntity>, QueryMovieParams> {
+class QueryMoviesUseCase implements UseCase<List<MovieEntity>, QueryMovieParams> {
   final MovieRepository repository;
 
-  QueryExamsUseCase(this.repository);
+  QueryMoviesUseCase(this.repository);
 
   @override
   Future<Either<Failure, List<MovieEntity>>> call(QueryMovieParams params) async {
