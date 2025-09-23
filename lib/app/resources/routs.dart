@@ -1,5 +1,6 @@
 const String routeMovieInfo = 'route_movie_info';
 const String routeMovieList = 'route_movie_list';
+const String routeFavorites = 'route_movie_favorites';
 
 const String pathIcons = 'res/images/';
 

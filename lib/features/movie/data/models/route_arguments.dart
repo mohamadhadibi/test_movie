@@ -1,7 +1,7 @@
 class MovieInfoPageArguments {
-  int? movieId;
+  int movieId;
 
   MovieInfoPageArguments({
-    this.movieId,
+    required this.movieId,
   });
 }
