@@ -1,5 +1,5 @@
 class MovieInfoPageArguments {
-  String? movieId;
+  int? movieId;
 
   MovieInfoPageArguments({
     this.movieId,

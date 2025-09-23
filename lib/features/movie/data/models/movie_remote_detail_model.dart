@@ -30,7 +30,7 @@ class MovieRemoteDetailModel {
         id: id,
         title: title ?? original_title ?? '',
         description: overview ?? '',
-        poster: poster_path?? '',
+        poster: (poster_path!= null) ? 'https://image.tmdb.org/t/p/w500$poster_path' :null,
         rate: vote_average?? 0,
       );
     }

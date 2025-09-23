@@ -6,7 +6,7 @@ Clean Architecture with BLoC pattern for state management.
 ## Technical Decisions
 - **BLoC**: Predictable state management, easy testing
 - **Clean Architecture**: Separation of concerns, maintainability
-- **Shared Preferences**: Simple local storage for favorites
+- **Hive**: Handling local storage for favorites
 - **tmdb_api**: Lightweight API wrapper for TMDB api calls handling
 - **gen_lang**: For text localization (in spite of only en we support in this app)
 - **infinite_scroll_pagination**: for better endless scrollview handling

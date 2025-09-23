@@ -7,6 +7,7 @@ import 'package:test_movie/features/movie/data/movie_cache_datasource.dart';
 import 'package:test_movie/features/movie/data/movie_cache_datasource_impl.dart';
 import 'package:test_movie/features/movie/data/movie_remote_datasource.dart';
 import 'package:test_movie/features/movie/data/movie_remote_datasource_impl.dart';
+import 'package:test_movie/features/movie/presentation/pages/list/movie_list_cubit.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 import 'package:test_movie/app/application_cubit.dart';
 import 'package:test_movie/features/movie/data/movie_repository_impl.dart';
@@ -34,6 +35,7 @@ Future<void> init() async {
 
   // NOTE: cubits
   get.registerFactory(() => ApplicationCubit());
+  get.registerFactory(() => MovieListCubit(get()));
 
   // NOTE: use-cases
   get.registerLazySingleton(() => SubmitMovieUseCase(get()));
