@@ -1,4 +1,3 @@
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:test_movie/core/error/failure.dart';
@@ -14,27 +13,32 @@ class MovieInfoCubit extends Cubit<MovieInfoState> {
   final GetMovieUseCase _getMovieUseCase;
   final SubmitMovieUseCase _submitMovieUseCase;
   final DeleteMovieUseCase _deleteMovieUseCase;
+
   MovieInfoCubit(
     this._getMovieUseCase,
     this._submitMovieUseCase,
     this._deleteMovieUseCase,
   ) : super(StateInitial());
 
-  late MovieEntity movie;
+  MovieEntity movie = MovieEntity();
 
   Future<void> getMovie(int movieId) async {
-    final result = await _getMovieUseCase.call(GetMovieParams(
-      movieId: movieId,
-    ));
-    result.fold((failure) {
-      emit(StateError(failure, notify));
-    }, (data) {
-      movie = data;
-    });
+    final result = await _getMovieUseCase.call(
+      GetMovieParams(movieId: movieId),
+    );
+    result.fold(
+      (failure) {
+        emit(StateError(failure, notify));
+      },
+      (data) {
+        movie = data;
+        notify();
+      },
+    );
   }
 
   Future<void> addRemoveFavorite() async {
-    if(movie.getIsFav()) {
+    if (movie.getIsFav()) {
       await _removeFav();
     } else {
       await _addFav();
@@ -42,33 +46,40 @@ class MovieInfoCubit extends Cubit<MovieInfoState> {
   }
 
   Future<void> _addFav() async {
-    final result = await _submitMovieUseCase.call(SubmitMovieParams(
-      id: movie.id,
-      title: movie.title,
-      description: movie.description,
-      poster: movie.poster,
-      rate: movie.rate,
-    ));
-    result.fold((failure) {
-      emit(StateError(failure, notify));
-    }, (data) {
-      movie.setIsFav(false);
-      notify();
-    });
+    final result = await _submitMovieUseCase.call(
+      SubmitMovieParams(
+        id: movie.id,
+        title: movie.title,
+        description: movie.description,
+        poster: movie.poster,
+        rate: movie.rate,
+      ),
+    );
+    result.fold(
+      (failure) {
+        emit(StateError(failure, notify));
+      },
+      (data) {
+        movie.setIsFav(true);
+        notify();
+      },
+    );
   }
 
   Future<void> _removeFav() async {
-    final result = await _deleteMovieUseCase.call(DeleteMovieParams(
-      movieId: movie.id!,
-    ));
-    result.fold((failure) {
-      emit(StateError(failure, notify));
-    }, (data) {
-      movie.setIsFav(true);
-      notify();
-    });
+    final result = await _deleteMovieUseCase.call(
+      DeleteMovieParams(movieId: movie.id!),
+    );
+    result.fold(
+      (failure) {
+        emit(StateError(failure, notify));
+      },
+      (data) {
+        movie.setIsFav(false);
+        notify();
+      },
+    );
   }
 
   void notify() => emit(StateNotify(DateTime.now().toString()));
-
 }

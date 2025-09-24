@@ -9,6 +9,7 @@ part 'movie_list_state.dart';
 
 class MovieListCubit extends Cubit<MovieListState> {
   final QueryMoviesUseCase _queryMoviesUseCase;
+
   MovieListCubit(this._queryMoviesUseCase) : super(StateInitial());
 
   String searchText = '';
@@ -16,13 +17,16 @@ class MovieListCubit extends Cubit<MovieListState> {
 
   Future<List<MovieEntity>> getMovies() async {
     final result = await _queryMoviesUseCase.call(params);
-    return result.fold((failure) {
-      emit(StateError(failure, notify));
-      return [];
-    }, (data) {
-      params.page = params.page + 1;
-      return data;
-    });
+    return result.fold(
+      (failure) {
+        emit(StateError(failure, notify));
+        return [];
+      },
+      (data) {
+        params.page = params.page + 1;
+        return data;
+      },
+    );
   }
 
   void notify() => emit(StateRefresh(DateTime.now().toString()));

@@ -45,17 +45,17 @@ class _MovieListPageState extends State<MovieListPage> {
       ),
     );
   }
+
   Widget _getResultBody(MovieListState state) {
     if (state is StateError) {
       return FailureWidget(
         failure: state.failure.message(context),
         retry: state.onRetry,
       );
-    }
-    else {
+    } else {
       return MovieListItemWidget(
         onSelect: (MovieEntity movie) {
-          if(movie.id != null) {
+          if (movie.id != null) {
             _navigateToMovieInfo(movie.id!);
           }
         },
@@ -76,17 +76,11 @@ class _MovieListPageState extends State<MovieListPage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           IconButton(
-            icon: Icon(
-              CupertinoIcons.heart_fill,
-              color: AppColors.white,
-            ),
+            icon: Icon(CupertinoIcons.heart_fill, color: AppColors.white),
             onPressed: () => _navigateToFavorites(),
           ),
           IconButton(
-            icon: Icon(
-              CupertinoIcons.clear,
-              color: AppColors.white,
-            ),
+            icon: Icon(CupertinoIcons.clear, color: AppColors.white),
             onPressed: () => _onClearClick(),
           ),
           Expanded(
@@ -96,19 +90,17 @@ class _MovieListPageState extends State<MovieListPage> {
                 controller: searchController,
                 decoration: InputDecoration.collapsed(
                   hintText: S.of(context).btn_search,
-                  hintStyle: Theme.of(context)
-                      .textTheme
-                      .bodyLarge
-                      ?.copyWith(color: AppColors.white),
+                  hintStyle: Theme.of(
+                    context,
+                  ).textTheme.bodyLarge?.copyWith(color: AppColors.white),
                 ),
                 onChanged: (text) {
                   _cubit.searchText = text;
                   onSearchDebouncer.debounce(() => _cubit.search());
                 },
-                style: Theme.of(context)
-                    .textTheme
-                    .headlineMedium
-                    ?.copyWith(color: AppColors.white),
+                style: Theme.of(
+                  context,
+                ).textTheme.headlineMedium?.copyWith(color: AppColors.white),
                 //autofocus: _cubit.allCategories.isNotEmpty,
               ),
             ),
@@ -132,9 +124,7 @@ class _MovieListPageState extends State<MovieListPage> {
     Navigator.pushNamed(
       context,
       routeMovieInfo,
-      arguments: MovieInfoPageArguments(
-        movieId: movieId
-      ),
+      arguments: MovieInfoPageArguments(movieId: movieId),
     );
   }
 
@@ -142,9 +132,7 @@ class _MovieListPageState extends State<MovieListPage> {
     Navigator.pushNamed(
       context,
       routeMovieInfo,
-      arguments: MovieInfoPageArguments(
-          movieId: 0
-      ),
+      arguments: MovieInfoPageArguments(movieId: 0),
     );
   }
 
@@ -154,4 +142,3 @@ class _MovieListPageState extends State<MovieListPage> {
     super.dispose();
   }
 }
-

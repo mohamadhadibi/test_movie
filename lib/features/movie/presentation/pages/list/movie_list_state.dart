@@ -21,8 +21,9 @@ class StateError extends MovieListState {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    return other is StateError && other.failure == failure
-        && other.onRetry == onRetry;
+    return other is StateError &&
+        other.failure == failure &&
+        other.onRetry == onRetry;
   }
 
   @override

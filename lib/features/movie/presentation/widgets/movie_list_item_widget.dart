@@ -25,14 +25,14 @@ class MovieListItemWidget extends StatefulWidget {
 }
 
 class _MovieListItemWidget extends State<MovieListItemWidget> {
-  final PagingController<int, MovieEntity> _pagingController =
-  PagingController(firstPageKey: 1);
+  final PagingController<int, MovieEntity> _pagingController = PagingController(
+    firstPageKey: 1,
+  );
 
   @override
   Widget build(BuildContext context) {
     if (widget.isClear ?? false) _pagingController.refresh();
     return RefreshIndicator(
-
       onRefresh: () => Future.sync(() {
         widget.onRefresh();
         _pagingController.refresh();
@@ -63,7 +63,8 @@ class _MovieListItemWidget extends State<MovieListItemWidget> {
   }
 
   Widget _onBindView(BuildContext context, MovieEntity item, int index) {
-    String trimmedDescription = (item.description?.length ?? 0) > maxDescriptionLength
+    String trimmedDescription =
+        (item.description?.length ?? 0) > maxDescriptionLength
         ? '${item.description?.substring(0, maxDescriptionLength)}...'
         : item.description ?? '';
 
@@ -81,32 +82,44 @@ class _MovieListItemWidget extends State<MovieListItemWidget> {
                 borderRadius: BorderRadius.circular(8),
                 child: (item.poster != null && item.poster!.isNotEmpty)
                     ? CachedNetworkImage(
-                  imageUrl: item.poster!,
-                  cacheKey: 'movie_${item.id}',
-                  width: imageWidth,
-                  height: imageHeight,
-                  maxWidthDiskCache: 400,
-                  memCacheHeight: 200,
-                  fit: BoxFit.cover,
-                  placeholder: (context, url) => Container(
-                    width: imageWidth,
-                    height: imageHeight,
-                    color: Colors.grey[300],
-                    child: const Icon(Icons.image, size: 40, color: Colors.grey),
-                  ),
-                  errorWidget: (context, url, error) => Container(
-                    width: imageWidth,
-                    height: imageHeight,
-                    color: Colors.grey[300],
-                    child: const Icon(Icons.broken_image, size: 40, color: Colors.grey),
-                  ),
-                )
+                        imageUrl: item.poster!,
+                        cacheKey: 'movie_${item.id}',
+                        width: imageWidth,
+                        height: imageHeight,
+                        maxWidthDiskCache: 400,
+                        memCacheHeight: 200,
+                        fit: BoxFit.cover,
+                        placeholder: (context, url) => Container(
+                          width: imageWidth,
+                          height: imageHeight,
+                          color: Colors.grey[300],
+                          child: const Icon(
+                            Icons.image,
+                            size: 40,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        errorWidget: (context, url, error) => Container(
+                          width: imageWidth,
+                          height: imageHeight,
+                          color: Colors.grey[300],
+                          child: const Icon(
+                            Icons.broken_image,
+                            size: 40,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      )
                     : Container(
-                  width: imageWidth,
-                  height: imageHeight,
-                  color: Colors.grey[300],
-                  child: const Icon(Icons.image_not_supported, size: 40, color: Colors.grey),
-                ),
+                        width: imageWidth,
+                        height: imageHeight,
+                        color: Colors.grey[300],
+                        child: const Icon(
+                          Icons.image_not_supported,
+                          size: 40,
+                          color: Colors.grey,
+                        ),
+                      ),
               ),
               const SizedBox(width: 12),
               Expanded(
@@ -119,9 +132,8 @@ class _MovieListItemWidget extends State<MovieListItemWidget> {
                         item.title ?? '',
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: Theme.of(context).textTheme.titleMedium
+                            ?.copyWith(fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 6),
                       Text(
@@ -139,9 +151,8 @@ class _MovieListItemWidget extends State<MovieListItemWidget> {
                           const SizedBox(width: 4),
                           Text(
                             (item.rate ?? 0).toStringAsFixed(1),
-                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              fontWeight: FontWeight.w600,
-                            ),
+                            style: Theme.of(context).textTheme.bodyMedium
+                                ?.copyWith(fontWeight: FontWeight.w600),
                           ),
                         ],
                       ),
