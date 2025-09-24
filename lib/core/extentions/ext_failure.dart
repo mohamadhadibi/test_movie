@@ -30,7 +30,7 @@ extension ErrorMessageHandlerImpl on Failure {
     } else if (this is NotDoneFailure) {
       return S.of(context).error_not_done;
     } else {
-      return toString();
+      return 'Connection error!';
     }
   }
 }

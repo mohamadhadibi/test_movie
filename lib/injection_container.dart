@@ -22,8 +22,6 @@ import 'package:test_movie/features/movie/domain/usecases/query_movie_usecase.da
 final get = GetIt.instance;
 
 Future<void> init() async {
-  //get.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl());
-
   await Hive.initFlutter();
   Hive.registerAdapter(MovieCacheModelAdapter());
   final movieCacheBox = await Hive.openBox<MovieCacheModel>(hiveMovie);

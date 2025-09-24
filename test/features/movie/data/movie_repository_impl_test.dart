@@ -82,7 +82,7 @@ void main() {
       expect(entity.id, 42);
       expect(entity.title, 'The Answer');
       expect(entity.description, 'Life, Universe, Everything');
-      expect(entity.poster, 'poster.png');
+      expect(entity.poster, 'https://image.tmdb.org/t/p/w500poster.png');
       expect(entity.rate, 9.9);
       verify(() => remote.get(any(that: isA<GetMovieParams>()))).called(1);
     });

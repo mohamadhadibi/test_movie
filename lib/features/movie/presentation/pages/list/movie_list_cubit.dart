@@ -13,7 +13,7 @@ class MovieListCubit extends Cubit<MovieListState> {
   MovieListCubit(this._queryMoviesUseCase) : super(StateInitial());
 
   String searchText = '';
-  QueryMovieParams params = QueryMovieParams(page: 0);
+  QueryMovieParams params = QueryMovieParams(page: 1, text: '');
 
   Future<List<MovieEntity>> getMovies() async {
     final result = await _queryMoviesUseCase.call(params);
