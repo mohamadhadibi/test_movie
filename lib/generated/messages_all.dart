@@ -15,7 +15,7 @@ class $en extends MessageLookupByLibrary {
   final messages = {
 		"app_name" : MessageLookupByLibrary.simpleMessage("Test Movie"),
 		"movie_list_toolbar" : MessageLookupByLibrary.simpleMessage("Movie List"),
-		"movie_info_toolbar" : MessageLookupByLibrary.simpleMessage("Movie Info"),
+		"movie_favorites_toolbar" : MessageLookupByLibrary.simpleMessage("Favorites"),
 		"btn_search" : MessageLookupByLibrary.simpleMessage("Search"),
 		"error_internet_connection" : MessageLookupByLibrary.simpleMessage("No Network Connection!"),
 		"error_disabled_user" : MessageLookupByLibrary.simpleMessage("User is not enable!"),

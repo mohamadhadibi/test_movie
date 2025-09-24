@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:test_movie/features/movie/data/models/route_arguments.dart';
+import 'package:test_movie/features/movie/presentation/pages/favorites/movie_favorites_page.dart';
 import 'package:test_movie/features/movie/presentation/pages/info/movie_info_page.dart';
 import 'package:test_movie/features/movie/presentation/pages/list/movie_list_page.dart';
 import 'package:test_movie/injection_container.dart';
@@ -59,7 +60,10 @@ class _Application extends State<Application> {
                   return MaterialPageRoute(
                     builder: (BuildContext context) => const MovieListPage(),
                   );
-
+                case routeFavorites:
+                  return MaterialPageRoute(
+                    builder: (BuildContext context) => const MovieFavoritesPage(),
+                  );
                 case routeMovieInfo:
                   if (arguments is MovieInfoPageArguments) {
                     return MaterialPageRoute(

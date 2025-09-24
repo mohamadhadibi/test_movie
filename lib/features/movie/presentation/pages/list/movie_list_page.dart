@@ -129,11 +129,7 @@ class _MovieListPageState extends State<MovieListPage> {
   }
 
   void _navigateToFavorites() {
-    Navigator.pushNamed(
-      context,
-      routeMovieInfo,
-      arguments: MovieInfoPageArguments(movieId: 0),
-    );
+    Navigator.pushNamed(context, routeFavorites);
   }
 
   @override

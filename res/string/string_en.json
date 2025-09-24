@@ -1,7 +1,7 @@
 {
   "app_name": "Test Movie",
   "movie_list_toolbar": "Movie List",
-  "movie_info_toolbar": "Movie Info",
+  "movie_favorites_toolbar": "Favorites",
   "btn_search": "Search",
   "error_internet_connection": "No Network Connection!",
   "error_disabled_user": "User is not enable!",

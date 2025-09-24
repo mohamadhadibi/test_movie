@@ -7,6 +7,7 @@ import 'package:test_movie/features/movie/data/movie_cache_datasource.dart';
 import 'package:test_movie/features/movie/data/movie_cache_datasource_impl.dart';
 import 'package:test_movie/features/movie/data/movie_remote_datasource.dart';
 import 'package:test_movie/features/movie/data/movie_remote_datasource_impl.dart';
+import 'package:test_movie/features/movie/presentation/pages/favorites/movie_favorites_cubit.dart';
 import 'package:test_movie/features/movie/presentation/pages/info/movie_info_cubit.dart';
 import 'package:test_movie/features/movie/presentation/pages/list/movie_list_cubit.dart';
 import 'package:tmdb_api/tmdb_api.dart';
@@ -29,7 +30,7 @@ Future<void> init() async {
   get.registerLazySingleton<Box<MovieCacheModel>>(() => movieCacheBox);
 
   final tmdb = TMDB(
-    ApiKeys(tmdbApiKey, tmdbToken), 
+    ApiKeys(tmdbApiKey, tmdbToken),
     logConfig: const ConfigLogger.showAll(),
   );
   get.registerLazySingleton<TMDB>(() => tmdb);
@@ -38,7 +39,7 @@ Future<void> init() async {
   get.registerFactory(() => ApplicationCubit());
   get.registerFactory(() => MovieListCubit(get()));
   get.registerFactory(() => MovieInfoCubit(get(), get(), get()));
-
+  get.registerFactory(() => MovieFavoritesCubit(get(), get()));
 
   // NOTE: use-cases
   get.registerLazySingleton(() => SubmitMovieUseCase(get()));
@@ -47,10 +48,15 @@ Future<void> init() async {
   get.registerLazySingleton(() => QueryMoviesUseCase(get()));
 
   // NOTE: repositories
-  get.registerLazySingleton<MovieRepository>(() => MovieRepositoryImpl(get(), get()));
+  get.registerLazySingleton<MovieRepository>(
+    () => MovieRepositoryImpl(get(), get()),
+  );
 
   // NOTE: data-sources
-  get.registerLazySingleton<MovieCacheDataSource>(() => MovieCacheDataSourceImpl(get()));
-  get.registerLazySingleton<MovieRemoteDataSource>(() => MovieRemoteDataSourceImpl(get()));
-
+  get.registerLazySingleton<MovieCacheDataSource>(
+    () => MovieCacheDataSourceImpl(get()),
+  );
+  get.registerLazySingleton<MovieRemoteDataSource>(
+    () => MovieRemoteDataSourceImpl(get()),
+  );
 }

@@ -44,8 +44,8 @@ class S {
     return Intl.message("Movie List", name: 'movie_list_toolbar');
   }
 
-  String get movie_info_toolbar {
-    return Intl.message("Movie Info", name: 'movie_info_toolbar');
+  String get movie_favorites_toolbar {
+    return Intl.message("Favorites", name: 'movie_favorites_toolbar');
   }
 
   String get btn_search {
